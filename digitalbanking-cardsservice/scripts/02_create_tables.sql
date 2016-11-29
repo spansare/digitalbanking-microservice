@@ -1,8 +1,22 @@
-ALTER TABLE public.customer
-    OWNER to postgres;
-    
-create table DBT.card(card_no bigint , cvv int  not null, expiry_date date not null, 
-card_type varchar(10) not null, customer_id int, card_company varchar(10) not null, 
-credit_limit decimal(10,2), card_status Boolean, constraint pk_cardNo primary key(card_no));
+DROP TABLE IF EXISTS card;
+CREATE TABLE card (
+  card_no bigint(20) NOT NULL,
+  cvv int(11) NOT NULL,
+  expiry_date date NOT NULL,
+  card_type varchar(10) NOT NULL,
+  customer_id int(11) DEFAULT NULL,
+  card_company varchar(10) NOT NULL,
+  credit_limit decimal(10,2) DEFAULT NULL,
+  card_status tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (card_no)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO DBT.CARD VALUES(3624978443870993,6502,'2020-12-31','CREDIT',556677,'VISA',250000,1)
+DROP TABLE IF EXISTS customer;
+CREATE TABLE customer (
+  customer_id int(11) NOT NULL,
+  customer_name char(40) NOT NULL,
+  password char(20) DEFAULT NULL,
+  last_login date DEFAULT NULL,
+  mobile_no char(15) DEFAULT NULL,
+  email_id varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
