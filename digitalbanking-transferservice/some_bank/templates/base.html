@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% block styling %}
+    <link rel="stylesheet" href="{% static 'bootstrap/3.3.7/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'jquery/jquery-ui-1.12.1/themes/smoothness/jquery-ui.min.css' %}">
+    {% endblock styling %}
+
+    {% block javascript %}
+    <script src="{% static 'jquery/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap/3.3.7/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'jquery/jquery-ui-1.12.1/jquery-ui.min.js' %}"></script>
+
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script>
+    {% endblock javascript %}
+</head>
+<body>
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header"><a class="navbar-brand" href="#">Home</a></div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">Banking</a></li>
+            <li><a href="#">Credit card</a></li>
+            <li><a href="#">Investment</a></li>
+            <li><a href="#">Loan</a></li>
+            <li><a href="#">Insurance</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'some_bank_logout' %}">Sign out</a></li>
+            {% else %}
+            <li><a href="{% url 'some_bank_login' %}">Sign in</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+<div>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="#">Transfer</a></li>
+        <li><a href="#" data-toggle="pill">Bill pay</a></li>
+    </ul>
+</div>
+
+<div class="container" style="width: 50%">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="{% url 'same_bank_fund_transfer_list' %}">Within bank</a></li>
+        <!--<li data-toggle="tab"><a href="{% url 'other_bank_fund_transfer_list' %}">To another bank</a></li>-->
+        <li><a href="{% url 'other_bank_fund_transfer_list' %}">To another bank</a></li>
+    </ul>
+    <h4>{% block transfer_type %}{% endblock transfer_type %}</h4>
+    {% block content %}
+    {% endblock content %}
+</div>
+
+</body>
+</html>

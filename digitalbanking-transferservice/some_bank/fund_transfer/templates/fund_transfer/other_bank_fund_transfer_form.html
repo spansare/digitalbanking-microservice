@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'same_bank_fund_transfer_list' %}" method="post">
+    {% csrf_token %} {{ form }}
+    <table>
+        <tr>
+            <td><label>Nickname:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>To account:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Bank name:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>City:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Branch location:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Account type:</label></td>
+            <td><select>
+                <option value="">-- select one --</option>
+                <option value="savings">Savings</option>
+                <option value="current">Current</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label>Transaction type:</label></td>
+            <td>
+                <input type="radio" name="transaction_type_choice">EFT
+                <input type="radio" name="transaction_type_choice">IMPS
+            </td>
+        </tr>
+        <tr>
+            <td><label>From account:</label></td>
+            <td>
+                <select>
+                    <option value="">-- select one --</option>
+                    <option value="account1">Account1</option>
+                    <option value="account2">Account2</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Amount:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Transfer date:</label></td>
+            <td>
+                <input type="radio" name="transfer_date_choice">As of today
+                <input type="radio" name="transfer_date_choice">On a specific date
+            </td>
+        </tr>
+        <tr>
+            <td><label>Recurring:</label></td>
+            <td>
+                <input type="checkbox">
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit"/>
+</form>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'same_bank_fund_transfer_list' %}" method="post">
+    {% csrf_token %} {{ form }}
+    <table>
+        <tr>
+            <td><label>Account number:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>City:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Nickname:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit"/>
+</form>
+{% endblock content %}

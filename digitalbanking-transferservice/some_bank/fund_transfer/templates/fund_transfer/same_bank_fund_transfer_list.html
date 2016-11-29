@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Transfer{% endblock title %}
+{% block transfer_type %}Transfer within bank{% endblock transfer_type %}
+
+{% block content %}
+<table width="100%">
+    <tr>
+        <td><h5>Registered Payee List</h5></td>
+        <td align="right"><a href="same_bank_add_payee_form">Add payee</a></td>
+    </tr>
+</table>
+<table class="table table-striped">
+    <tr>
+        <th>Nickname</th>
+        <th>Type of transaction</th>
+        <th>Action</th>
+    </tr>
+    <tr>
+        <td>Nickname1</td>
+        <td>Within bank</td>
+        <td><a href="same_bank_fund_transfer_form">Make payment now</a>&nbsp;|&nbsp;<a href="#">Set recurring
+            payment</a>&nbsp;|&nbsp;<a href="#">Delete payee</a></td>
+    </tr>
+    {% for payee in payee_list %}
+    <tr>
+        <td>{{ payee.nickname }}</td>
+        <td>Within bank</td>
+        <td><a href="same_bank_fund_transfer_form">Make payment now</a>&nbsp;|&nbsp;<a href="#">Set recurring
+            payment</a>&nbsp;|&nbsp;<a href="#">Delete payee</a></td>
+    </tr>
+    {% empty %}
+    <!--<tr>
+        <td colspan="3">No payees available.</td>
+    </tr>-->
+    {% endfor %}
+</table>
+{% endblock content %}

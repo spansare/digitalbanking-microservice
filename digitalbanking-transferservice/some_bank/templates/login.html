@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Please login</title>
+</head>
+<body>
+    {% if form.errors %}
+        <p>Login failed. Please try again.</p>
+    {% endif %}
+
+    <form action="{% url 'some_bank_login' %}" method="post">
+        {% csrf_token %} {{ form }}
+
+        <input type="submit" value="Sign in" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+</body>
+</html>

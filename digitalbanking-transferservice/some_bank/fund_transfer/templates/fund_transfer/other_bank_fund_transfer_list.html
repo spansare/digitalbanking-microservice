@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Electronic Fund Transfer{% endblock title %}
+{% block transfer_type %}Transfer to another bank{% endblock transfer_type %}
+
+{% block content %}
+<table width="100%">
+    <tr>
+        <td><h5>Registered Payee List</h5></td>
+        <td align="right"><a href="other_bank_add_payee_form">Add payee</a></td>
+    </tr>
+</table>
+<table class="table table-striped">
+    <tr>
+        <th>Nickname</th>
+        <th>Type of transaction</th>
+        <th>Action</th>
+    <tr>
+        <td>Nickname2</td>
+        <td>EFT</td>
+        <td><a href="other_bank_fund_transfer_form">Make payment now</a>&nbsp;|&nbsp;<a href="#">Set recurring
+            payment</a>&nbsp;|&nbsp;<a href="#">Delete payee</a></td>
+    </tr>
+    {% for payee in payee_list %}
+    <tr>
+        <td>{{ payee.nickname }}</td>
+        <td>EFT</td>
+        <td><a href="other_bank_fund_transfer_form">Make payment now</a>&nbsp;|&nbsp;<a href="#">Set recurring
+            payment</a>&nbsp;|&nbsp;<a href="#">Delete payee</a></td>
+    </tr>
+    {% empty %}
+    <!--<tr>
+        <td colspan="3">No payees available.</td>
+    </tr>-->
+    {% endfor %}
+</table>
+{% endblock content %}

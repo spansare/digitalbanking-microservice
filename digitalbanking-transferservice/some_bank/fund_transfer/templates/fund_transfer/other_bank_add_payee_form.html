@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'other_bank_fund_transfer_list' %}" method="post">
+    {% csrf_token %} {{ form }}
+    <table>
+        <tr>
+            <td><label>Payee name:</label></td>
+            <td><input type="text"/>&nbsp;(as per payee's bank record)</td>
+        </tr>
+        <tr>
+            <td><label>Bank code:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Bank name:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Account / Card type:</label></td>
+            <td><select>
+                <option value="">-- select one --</option>
+                <option value="savings">Savings</option>
+                <option value="current">Current</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label>Account / Card number:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Nickname:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit"/>
+</form>
+{% endblock content %}

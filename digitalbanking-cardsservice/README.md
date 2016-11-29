@@ -7,6 +7,9 @@ Run App.java from com.capg.cardservices package
 This is a drop wizard application
 It will run embedded jetty container.
 
+To run
+Java –jar {filename}.jar server configuration.yml
+
 To test, start postman app in chrome
 http://localhost:90/cardservices/556677/cards
 
