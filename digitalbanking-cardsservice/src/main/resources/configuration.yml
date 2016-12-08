@@ -6,10 +6,10 @@ database:
   user: root
 
   # the password
-  password: India123
+  password: passw0rd
 
   # the JDBC URL
-  url: jdbc:mysql://127.0.0.1:3306/dbt
+  url: jdbc:mysql://134.168.59.181:3306/dbt
 
   # any properties specific to your JDBC driver:
   properties:
