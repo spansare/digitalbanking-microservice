@@ -43,11 +43,11 @@ public class AcccountServicesController {
     	return accountDao.findByAccountNo(accountNo);
     }
 	
-	@RequestMapping(value="/",method = RequestMethod.GET)
+	/*@RequestMapping(value="/",method = RequestMethod.GET)
     @ResponseBody
        public String getAccount() {
        
     	return "Hi Snehal!!";
-    }
+    }*/
 	
 }
